@@ -4,7 +4,10 @@ Por eso me import Component */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ForeCastItem from './ForeCastItem';
+import {getUrlForeCastByCity} from './../services/getUrlWatherByCity';
+import trasformWather from './../services/trasformWeather';
 import './styles.css';
+
 
 const days = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 const data = {
@@ -20,6 +23,22 @@ class ForeCastExtended extends Component {
         super();
         this.state = {foreCastData: null};
     }
+
+    componentDidMount() {
+         
+        fetch(getUrlForeCastByCity(this.props.city)).then(result => {
+            return result.json();
+        }).then(data => {
+           /*  const newWather = trasformWather(data); */
+            console.log(data);
+
+             this.setState(
+                {
+                    data: data
+                }); 
+        });
+    }
+    
     RenderDaysForeCastItem() {
 
         return days.map(day => <ForeCastItem weekDay={day} data={data}></ForeCastItem>);

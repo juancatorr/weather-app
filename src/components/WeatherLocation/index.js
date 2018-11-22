@@ -6,7 +6,7 @@ import WeatherData from './WeatherData';
 import './style.css';
 import trasformWather from '../../services/trasformWeather';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import getUrlWahterByCity from './../../services/getUrlWatherByCity';
+import {getUrlWahterByCity} from './../../services/getUrlWatherByCity';
 
 
 //esto es una row function
