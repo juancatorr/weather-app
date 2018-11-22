@@ -1,0 +1,24 @@
+/* .locationList{
+    background: red;
+}
+ */
+
+
+/* @media: esto es media query y lo que digo es que : se va a aplicar las prop que defino 
+adentro cuando el ancho sea hasta 64 em */
+
+@media (max-width:64em){
+    .locationList{
+    /*     background: green; */
+        min-height: 30vh;
+        overflow: auto;
+        margin-bottom: 20px;
+    }
+}
+
+.forecast-title{
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+ }
