@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LocationList from './../components/LocationList'
 import { connect } from 'react-redux';
-import { setCity } from './../actions';
+import { setSelectedCity } from './../actions';
 
 class LocationListContainer extends Component {
 
-    handleSelectionLocation = (cityy, data) => {
-        console.log(`handleSelectionLocation ${cityy}`);     
-        this.props.setCity(cityy);
-
-      };
+    handleSelectionLocation = (city, data) => {
+        console.log(`handleSelectionLocation ${city}`);
+        this.props.setCity(city);
+    };
 
     render() {
         return (
@@ -21,7 +20,7 @@ class LocationListContainer extends Component {
 
 LocationListContainer.propTypes = {
     setCity: PropTypes.func.isRequired,
-    cities:PropTypes.array.isRequired, 
+    cities: PropTypes.array.isRequired,
 };
 
 
@@ -37,7 +36,7 @@ no es necesario que tengan el mismo nombre.
  */
 const mapDispatchToPropsActions = dispatch => (
     {
-        setCity: value => dispatch(setCity(value)),
+        setCity: value => dispatch(setSelectedCity(value)),
 
     }
 );

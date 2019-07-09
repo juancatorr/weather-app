@@ -7,12 +7,18 @@
 /* @media: esto es media query y lo que digo es que : se va a aplicar las prop que defino 
 adentro cuando el ancho sea hasta 64 em */
 
-@media (max-width:64em){
+
+    .locationList{
+        height: 85vh;
+        overflow: auto;
+    }
+
+@media (max-width:75em){
     .locationList{
     /*     background: green; */
-        min-height: 30vh;
+        max-height: 40vh;
         overflow: auto;
-        margin-bottom: 20px;
+     
     }
 }
 

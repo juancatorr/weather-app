@@ -4,59 +4,40 @@ Por eso me import Component */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ForeCastItem from './ForeCastItem';
-import {getUrlForeCastByCity} from './../services/getUrlWatherByCity';
-import trasformWather from './../services/trasformWeather';
-import './styles.css';
+/* import './styles.css'; */
 
 
-const days = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+/* const days = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 const data = {
     temperature:1,
     humidity:10,
     weatherState:'nommal',
      wind:'normal ' 
-};
+}; */
 
 class ForeCastExtended extends Component {
 
-    constructor(){
-        super();
-        this.state = {foreCastData: null};
-    }
 
-    componentDidMount() {
-         
-        fetch(getUrlForeCastByCity(this.props.city)).then(result => {
-            return result.json();
-        }).then(data => {
-           /*  const newWather = trasformWather(data); */
-            console.log(data);
 
-             this.setState(
-                {
-                    data: data
-                }); 
-        });
-    }
-    
-    RenderDaysForeCastItem() {
+    RenderDaysForeCastItem(foreCastData) {
 
-        return days.map(day => <ForeCastItem weekDay={day} data={data}></ForeCastItem>);
+        return foreCastData.map(foreCast => <ForeCastItem weekDay={foreCast.weekDay} data={foreCast.data} hour={foreCast.hour} key={`${foreCast.weekDay}${foreCast.hour}`}></ForeCastItem>);
     }
-    RenderProgres(){
-        return <h3>'cargando pronóstico extendido...'</h3> ;
+    RenderProgres() {
+        return <h3>cargando pronóstico extendido...</h3>;
     }
     render() {
 
         const { city } = this.props;
-        const {foreCastData} = this.state;
+        const { foreCastData } = this.props;
         return (
             <div>
                 <h2 className='forecast-title'>
                     {`Pronóstico Extendido para ${city}`}
                 </h2>
 
-                {foreCastData ? this.RenderDaysForeCastItem() : this.RenderProgres()}
+                {foreCastData != null ? this.RenderDaysForeCastItem(foreCastData) : this.RenderProgres()}
+
             </div>);
     };
 };
