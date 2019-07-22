@@ -3,7 +3,8 @@ import thunk from 'redux-thunk';
 import reducers from './../reducers'
 
 const initialState = {
-    city: "Buenos Aires,ar"
+    city: "Buenos Aires,ar",
+    cities:{},
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

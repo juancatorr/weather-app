@@ -1,6 +1,6 @@
 import {url_base_weather,api_key , url_base_weather_forecast} from './../constants/apiUrl'
 
-export const getUrlWahterByCity = city =>{
+export const getUrlWeatherByCity = city =>{
 
     const api_weather = `${url_base_weather}?q=${city}&appid=${api_key}&units=metric`;
 
